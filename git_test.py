@@ -81,4 +81,4 @@ class GitImporter(objet):
 		result = sys.modules[module].run()
 		task_queue.get()
 
-		#kdjf store the result in our repo
+		# store the result in our repo

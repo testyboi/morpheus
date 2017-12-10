@@ -1,0 +1,12 @@
+[*] Found file abba.json
+[*] Attempting to retrieve dirlister
+[*] Found file modules/dirlister
+[*] Attempting to retrieve environment
+[*] Found file modules/environment
+<Thread(Thread-1, initial)>
+<Thread(Thread-1, started -1237896096)>
+<Thread(Thread-2, initial)>
+In dirlister moduele!!!
+['git_test.py', 'modules', '.bot.py.swp', 'data', 'bot.py', 'out.txt', 'README.md', 'config', '.git_test.py.swp', '.git']
+ Environmental module
+<Thread(Thread-2, started -1247808416)>
