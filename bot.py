@@ -13,7 +13,7 @@ from github3 import login
 bot_id = "abba"	#bots id
 
 bot_config	= "%s.json" % bot_id #loads config for specific bot,
-data_path	= "data/%s/" % bot_id
+data_path	= "data/%s/" % bot_id # whree is stores the data for all this stuff
 bot_modules	= []
 configured	= False
 task_queue	= Queue.Queue()
